@@ -3,8 +3,8 @@ FROM oven/bun AS base
 WORKDIR /user/app
 
 COPY package.json .
-
 COPY bun.lockb .
+COPY scripts/postinstall.cjs ./scripts/postinstall.cjs
 
 RUN bun install --frozen-lockfile --production
 
