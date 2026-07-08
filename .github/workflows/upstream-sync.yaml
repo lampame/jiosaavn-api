@@ -1,0 +1,37 @@
+name: Sync with upstream
+
+on:
+  schedule:
+    # Кожної неділі о 03:00 UTC
+    - cron: '0 3 * * 0'
+  workflow_dispatch: # дозволяє запуск вручну
+
+jobs:
+  sync:
+    name: Merge upstream into main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/sumitkolhe/jiosaavn-api.git
+          git fetch upstream
+
+      - name: Merge upstream/main (ours wins on conflict)
+        run: |
+          git merge upstream/main --no-edit --strategy-option=ours
+          # ours: при конфліктах зберігається НАШ код (захищає server.ts)
+          # Нові файли з upstream (нові модулі, зміни в Endpoints) все одно з'являться
+
+      - name: Push changes
+        run: git push origin main
