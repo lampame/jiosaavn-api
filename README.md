@@ -5,6 +5,18 @@
 
 An Unofficial API for downloading high-quality songs, albums, playlists, and more from [JioSaavn](https://jiosaavn.com).
 
+> [!IMPORTANT]
+> **Fork Disclaimer & Upstream Sync**
+> This repository is a customized fork of the original [sumitkolhe/jiosaavn-api](https://github.com/sumitkolhe/jiosaavn-api).
+> 
+> **How this fork differs:**
+> - **Radio Module Integration:** Adds support for radio endpoints (featured, genre, and artist stations), allowing the creation of radio stations and fetching song list streams.
+> - **Build & Deployment Adjustments:** Custom build configurations, improved Docker support, and optimized routing adjustments for Vercel.
+>
+> **Repository Updates (Upstream Sync):**
+> - The repository is configured to automatically sync with the upstream repository every Sunday at 03:00 UTC via the [Sync with upstream](.github/workflows/upstream-sync.yaml) GitHub Actions workflow (which can also be triggered manually).
+> - During synchronization, a `--strategy-option=ours` merge is used. This automatically resolves any conflicts by prioritizing our custom changes, ensuring our features (like the Radio module) are not overwritten, while seamlessly pulling new upstream features and fixes.
+
 ## 📚 Documentation
 
 Check out the [API documentation](https://saavn.dev/docs) for detailed information on how to use the API.
@@ -18,7 +30,7 @@ For a detailed list of changes, see the [CHANGELOG](CHANGELOG.md).
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/sumitkolhe/jiosaavn-api
+   git clone https://github.com/lampame/jiosaavn-api
    cd jiosaavn-api
    ```
 
@@ -53,11 +65,11 @@ JioSaavn API can be deployed to either Cloudflare Workers or Vercel. Below are t
 
 ### Cloudflare Workers
 
-[![Deploy with Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/sumitkolhe/jiosaavn-api)
+[![Deploy with Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/lampame/jiosaavn-api)
 
 ### Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sumitkolhe/jiosaavn-api)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/lampame/jiosaavn-api)
 
 ## 📜 License
 
