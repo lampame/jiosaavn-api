@@ -27,6 +27,12 @@ export const Endpoints = {
     id: 'playlist.getDetails',
     link: 'webapi.get'
   },
+  radio: {
+    featured: 'webradio.createFeaturedStation',
+    artist: 'webradio.createArtistStation',
+    songs: 'webradio.getSong',
+    featuredStations: 'webradio.getFeaturedStations'
+  },
   modules: 'content.getBrowseModules',
   trending: 'content.getTrending'
 }
