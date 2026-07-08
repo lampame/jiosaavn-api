@@ -2,7 +2,7 @@
 import { RadioController } from '#modules/radio/controllers'
 import { FeaturedRadioStationModel } from '#modules/radio/models'
 import { SongModel } from '#modules/songs/models'
-import { beforeAll, afterAll, describe, expect, it, vi } from 'vitest'
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
 import type { z } from 'zod'
 
 describe('RadioController', () => {
@@ -83,7 +83,7 @@ describe('RadioController', () => {
           })
         )
       }
-      return originalFetch(url, init)
+      return await originalFetch(url, init)
     })
   })
 
